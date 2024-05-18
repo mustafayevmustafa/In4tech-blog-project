@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\MustafaController;
@@ -25,3 +26,5 @@ Route::post('admin/category/store',[CategoryController::class,'store'])->name('a
 Route::post('admin/category/delete',[CategoryController::class,'delete'])->name('admin.categories.delete');
 Route::get('admin/category/edit/{id}',[CategoryController::class,'edit'])->name('admin.categories.edit');
 Route::post('admin/category/update',[CategoryController::class,'update'])->name('admin.categories.update');
+
+Route::resource('admin/blog', BlogController::class);

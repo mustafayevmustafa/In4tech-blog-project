@@ -28,11 +28,15 @@
         Interface
     </div>
 
-
     <li class="nav-item active">
         <a class="nav-link" href="{{route('admin.category.index')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Category</span></a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="/admin/blog">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Blog</span></a>
     </li>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">

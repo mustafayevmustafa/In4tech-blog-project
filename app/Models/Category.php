@@ -14,6 +14,9 @@ class Category extends Model
 
     protected $guarded = [];
 
+    public function blogs(){
+        return $this->hasMany(Blog::class);
+    }
 
     protected static function boot() {
         parent::boot();
