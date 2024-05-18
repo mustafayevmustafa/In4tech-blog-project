@@ -199,28 +199,52 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Blogs</h1>
+            <h1 class="h3 mb-2 text-gray-800">Blog Edit</h1>
 
-            <!-- <a href="/admin/blog/create" style="font-size: 40px">Add</a> -->
+            <a href="/admin/blog" style="font-size: 40px">Blog Index Page</a>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
-                <!-- Card Header - Accordion -->
 
-                <!-- Card Content - Collapse -->
-                <div class="card-header d-flex justify-content-center">
-                    <img src="{{ $blog -> image }}" class="m-3" style="max-height: 400px;" alt="blog-title">
-                </div>
                 <div class="card-body">
-                    <h3 class="m-3"> Title: <span class="btn btn-dark">{{ $blog -> title }}</span></h3>
-                    <h3 class="m-3"> Slug: <span class="btn btn-primary">{{ $blog -> slug }}</span></h3>
-                    <h3 class="m-3"> Category: <span class="btn btn-info">{{ $blog -> category -> title }}</span></h3>
-                    <h3 class="m-3">Content</h3>
-                    <div id="content" class="p-3">
-                        {!! $blog -> content !!}
-                    </div>
-                </div>
+                    <form class="user" method="post" action="/admin/blog/{{ $blog -> id }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" value="{{ $blog -> title }}" class="form-control form-control-user" placeholder="Enter Title...">                            
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="category">Category</label>
+                                <select id="category" name="category_id" class="form-control">
+                                    <option value="" selected>Choose</option>
+                                    @foreach($categories as $category)
+                                    <option value="{{$category-> id}}" {{ $blog -> category -> id === $category -> id ? 'selected':null }}>{{$category -> title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="image" class="d-block">Image</label>
+                                <img src="{{$blog -> image}}" width="100" height="100" alt="image" />
+                                <br>
+                                <label for="image" class="btn btn-info btn-icon-split">
+                                    <span class=" icon text-white-50"><i class="fas fa-info-circle"></i></span>
+                                    <span class="text">Change the image</span>
+                                </label>
+                                <input type="file" hidden id="image" name="image">
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            <label for="content"> Blog Content </label>
+                            <textarea id="content" name="content">{{ $blog -> content }}</textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Store</button>
+                    </form>
+
+                </div>
             </div>
 
         </div>

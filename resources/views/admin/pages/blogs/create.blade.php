@@ -212,6 +212,9 @@
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input type="text" id="title" name="title" class="form-control form-control-user" placeholder="Enter Title...">
+                            @error('title')
+                            <span class="text-danger my-2">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="row">
                             <div class="form-group col-6">
@@ -222,6 +225,9 @@
                                     <option value="{{$category-> id}}">{{$category -> title}}</option>
                                     @endforeach
                                 </select>
+                                @error('category_id')
+                                <span class="text-danger my-2">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group col-6">
                                 <label for="image" class="d-block">Image</label>
@@ -230,12 +236,19 @@
                                     <span class="text">Choose an image</span>
                                 </label>
                                 <input type="file" hidden id="image" name="image" class="form-control form-control-user">
+                                <br>
+                                @error('image')
+                                <span class="text-danger my-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="content"> Blog Content </label>
                             <textarea id="content" name="content"></textarea>
+                            @error('content')
+                            <span class="text-danger my-2">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-user btn-block">Store</button>

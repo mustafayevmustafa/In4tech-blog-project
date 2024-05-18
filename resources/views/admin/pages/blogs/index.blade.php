@@ -225,6 +225,7 @@
                                     <td>{{$blog->category -> title}}</td>
                                     <td>
                                         <a href="/admin/blog/{{ $blog -> id }}" class="btn btn-info">Show</a>
+                                        <a href="/admin/blog/{{ $blog -> id }}/edit" class="btn btn-warning">Edit</a>
                                         <button form="{{ $blog -> id }}_delete" class="btn btn-danger">Delete</button>
                                         <form id="{{ $blog -> id }}_delete" hidden method="post" action="/admin/blog/{{ $blog -> id }}">
                                             @csrf
