@@ -224,7 +224,7 @@
                 <div class="card shadow mb-4">
 
                     <div class="card-body">
-                        <form class="user" method="post" action="{{route('admin.blog.store')}}">
+                        <form class="user" method="post" action="{{route('admin.blog.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <input type="text" name="title" class="form-control form-control-user"
@@ -234,6 +234,14 @@
                                 <textarea type="text" name="content" class="form-control form-control-user"
                                           placeholder="Enter Content..."></textarea>
                             </div>
+                            <div class="form-group">
+                               File:  <input type="file" name="image">
+                            </div>
+                            <select class="form-control"  name="category_id">
+                                @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->title}}</option>
+                                @endforeach
+                            </select><br><br>
                            <button  class="btn btn-primary btn-user btn-block">Store</button>
                         </form>
 
