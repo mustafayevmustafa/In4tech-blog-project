@@ -234,7 +234,7 @@
                                 <textarea type="text" name="content" class="form-control form-control-user"
                                           placeholder="Enter Content...">{{$blog->content}}</textarea>
                             </div>
-                           <button  class="btn btn-primary btn-user btn-block">Update</button>
+                            <button  class="btn btn-primary btn-user btn-block">Update</button>
                         </form>
 
                     </div>

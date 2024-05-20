@@ -234,7 +234,7 @@
                                 <textarea type="text" name="content" class="form-control form-control-user"
                                           placeholder="Enter Content..."></textarea>
                             </div>
-                           <button  class="btn btn-primary btn-user btn-block">Store</button>
+                            <button  class="btn btn-primary btn-user btn-block">Store</button>
                         </form>
 
                     </div>

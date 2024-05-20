@@ -236,19 +236,19 @@
                                 </thead>
                                 <tbody>
                                 @foreach($blogs as $blog)
-                                <tr>
-                                    <td>{{$blog->title}}</td>
-                                    <td>{{$blog->content}}</td>
-                                    <td>{{$blog->slug}}</td>
-                                    <td class="d-flex">
-                                        <form action="{{route('admin.blog.delete')}}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{$blog->id}}" >
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                        <a href="{{route('admin.blog.edit',$blog->id)}}" class="btn btn-success ml-3">Edit</a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{$blog->title}}</td>
+                                        <td>{{$blog->content}}</td>
+                                        <td>{{$blog->slug}}</td>
+                                        <td class="d-flex">
+                                            <form action="{{route('admin.blog.delete')}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$blog->id}}" >
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                            <a href="{{route('admin.blog.edit',$blog->id)}}" class="btn btn-success ml-3">Edit</a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>

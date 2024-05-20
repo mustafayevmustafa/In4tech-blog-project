@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">In4tech Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">blogIn4tech Admin <sup>2</sup></div>
     </a>
 
     <!-- Divider -->
@@ -36,7 +36,7 @@
     </li>
     <li class="nav-item active">
         <a class="nav-link" href="{{route('admin.blog.index')}}">
-            <i class="fas fa-fw fa-blog"></i>
+            <i class="fas fa-w fa-address-book"></i>
             <span>Blog</span></a>
     </li>
     <!-- Nav Item - Pages Collapse Menu -->
