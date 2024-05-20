@@ -34,6 +34,11 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Category</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('admin.blog.index')}}">
+            <i class="fas fa-fw fa-blog"></i>
+            <span>Blog</span></a>
+    </li>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
