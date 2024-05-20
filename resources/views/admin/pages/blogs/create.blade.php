@@ -228,12 +228,11 @@
                             @csrf
                             <div class="form-group">
                                 <input type="text" name="title" class="form-control form-control-user"
-                                       id="exampleInputEmail" aria-describedby="emailHelp"
-                                       placeholder="Enter Title..."><br>
-                                <input type="text" name="content" class="form-control form-control-user"
-                                       id="exampleInputEmail" aria-describedby="emailHelp"
-                                       placeholder="Enter Content...">
-
+                                       placeholder="Enter Title...">
+                            </div>
+                            <div class="form-group">
+                                <textarea type="text" name="content" class="form-control form-control-user"
+                                          placeholder="Enter Content..."></textarea>
                             </div>
                            <button  class="btn btn-primary btn-user btn-block">Store</button>
                         </form>

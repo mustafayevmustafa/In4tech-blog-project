@@ -244,7 +244,7 @@
                                     <td>
                                         <form action="{{route('admin.blogs.delete')}}" method="post">
                                             @csrf
-                                            <input type="hidden" name="id" value="{{$blog->id}}">
+                                            <input type="hidden" name="id" value="{{$blog->id}}" >
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                     </td>

@@ -216,7 +216,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Blogs Edit</h1>
+                <h1 class="h3 mb-2 text-gray-800">Blog Edit</h1>
 
                 <a href="{{route('admin.blog.index')}}" style="font-size: 40px">Index Page</a>
 
@@ -227,9 +227,8 @@
                         <form class="user" method="post" action="{{route('admin.blogs.update', $id)}}">
                             @csrf
                             <div class="form-group">
-                                <input type="text" name="title" value="{{$blog->title}}" class="form-control form-control-user"
-                                       id="exampleInputEmail" aria-describedby="emailHelp"
-                                       placeholder="Enter Title...">
+                                <input type="text" name="title" class="form-control form-control-user"
+                                       placeholder="Enter Title..." value="{{$blog->title}}">
                             </div>
                             <div class="form-group">
                                 <input type="text" name="content" value="{{$blog->content}}" class="form-control form-control-user"
