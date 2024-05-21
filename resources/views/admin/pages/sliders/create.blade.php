@@ -216,20 +216,26 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Category Add</h1>
+                <h1 class="h3 mb-2 text-gray-800">Slider Add</h1>
 
-                <a href="{{route('admin.category.index')}}" style="font-size: 40px">Index Page</a>
+                <a href="{{route('admin.slider.index')}}" style="font-size: 40px">Index Page</a>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
 
                     <div class="card-body">
-                        <form class="user" method="post" action="{{route('admin.category.store')}}">
+                        <form class="user" method="post" action="{{route('admin.slider.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <input type="text" name="title" class="form-control form-control-user"
-                                       id="exampleInputEmail" aria-describedby="emailHelp"
                                        placeholder="Enter Title...">
+                            </div>
+                            <div class="form-group">
+                                <textarea type="text" name="content" class="form-control form-control-user"
+                                          placeholder="Enter Content..."></textarea>
+                            </div>
+                            <div class="form-group">
+                               File:  <input type="file" name="image" class="form-control form-control-file">
                             </div>
                            <button  class="btn btn-primary btn-user btn-block">Store</button>
                         </form>

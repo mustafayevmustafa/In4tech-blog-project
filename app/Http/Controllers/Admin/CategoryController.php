@@ -35,11 +35,9 @@ class CategoryController extends Controller
         $category = Category::find($id);
         return view('admin.pages.categories.edit',compact('category'));
     }
-    public function update(CategoryUpdateRequest $request){
+    public function update(CategoryUpdateRequest $request, $id){
         $data = $request->validated();
-        $category = new Category();
-        $category->title = $data['title'];
-        $category->save();
+        Category::where('id', $id)->update($data);
         return redirect()->route('admin.category.index');
     }
 }

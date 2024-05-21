@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BlogStoreRequest extends FormRequest
+class SliderUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,7 +17,7 @@ class BlogStoreRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-      @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
@@ -25,7 +25,6 @@ class BlogStoreRequest extends FormRequest
             'title'=>'required',
             'content'=>'required',
             'image'=>'nullable',
-            'category_id'=>'nullable'
         ];
     }
 }

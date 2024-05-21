@@ -23,7 +23,9 @@ class BlogUpdateRequest extends FormRequest
     {
         return [
             'title'=>'required',
-            'content'=>'required'
+            'content'=>'required',
+            'image'=>'nullable',
+            'category_id'=>'nullable'
         ];
     }
 }

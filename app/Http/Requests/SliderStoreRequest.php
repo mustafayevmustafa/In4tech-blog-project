@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BlogStoreRequest extends FormRequest
+class SliderStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,6 @@ class BlogStoreRequest extends FormRequest
             'title'=>'required',
             'content'=>'required',
             'image'=>'nullable',
-            'category_id'=>'nullable'
         ];
     }
 }

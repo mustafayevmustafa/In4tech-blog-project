@@ -224,7 +224,7 @@
                 <div class="card shadow mb-4">
 
                     <div class="card-body">
-                        <form class="user" method="post" action="{{route('admin.categories.update')}}">
+                        <form class="user" method="post" action="{{route('admin.category.update', $category->id)}}">
                             @csrf
                             <div class="form-group">
                                 <input type="text" name="title" value="{{$category->title}}" class="form-control form-control-user"

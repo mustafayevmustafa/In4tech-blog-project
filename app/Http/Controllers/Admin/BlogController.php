@@ -20,13 +20,13 @@ class BlogController extends Controller
 
     public function create(){
         $categories = Category::get();
-        return view('admin.pages.blogs.create',compact('categories'));
+        return view('admin.pages.blogs.create', compact('categories'));
     }
 
     public function store(BlogStoreRequest $request){
 
         $name = 'blog' . time() . '.' . $request->file('image')->extension();
-        $request->file('image')->move(public_path() . '/blog/', $name);
+        $request->file('image')->move(public_path() . '/img/blog/', $name);
         $vali = array_merge($request->validated(), ['image' => $name]);
 
         Blog::create($vali);
@@ -42,7 +42,7 @@ class BlogController extends Controller
 
     public function edit($id){
         $blog = Blog::find($id);
-        return view('admin.pages.blogs.edit',compact('blog', 'id'));
+        return view('admin.pages.blogs.edit', compact('blog', 'id'));
     }
 
     public function update(BlogUpdateRequest $request, $id)

@@ -216,24 +216,43 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Category Add</h1>
+                <h1 class="h3 mb-2 text-gray-800">Sliders</h1>
 
-                <a href="{{route('admin.category.index')}}" style="font-size: 40px">Index Page</a>
+                <a href="{{route('admin.slider.create')}}" style="font-size: 40px">Add</a>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
 
                     <div class="card-body">
-                        <form class="user" method="post" action="{{route('admin.category.store')}}">
-                            @csrf
-                            <div class="form-group">
-                                <input type="text" name="title" class="form-control form-control-user"
-                                       id="exampleInputEmail" aria-describedby="emailHelp"
-                                       placeholder="Enter Title...">
-                            </div>
-                           <button  class="btn btn-primary btn-user btn-block">Store</button>
-                        </form>
-
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Content</th>
+                                    <th>image</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($sliders as $slider)
+                                    <tr>
+                                        <td>{{$slider->title}}</td>
+                                        <td>{{$slider->content}}</td>
+                                        <td><img src="{{asset("img/sliders/$slider->image")}}" alt="Slider image" class="img-thumbnail" style="width: 200px"></td>
+                                        <td class="d-flex">
+                                            <form action="{{route('admin.slider.delete')}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$slider->id}}" >
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                            <a href="{{route('admin.slider.edit',$slider->id)}}" class="btn btn-success ml-3">Edit</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 

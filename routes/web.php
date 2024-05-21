@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\IndexController;
-use App\Http\Controllers\MustafaController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,21 +17,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin/index',[IndexController::class,'index'])->name('admin.index');
 
-Route::get('admin/category',[CategoryController::class,'index'])->name('admin.category.index');
-Route::get('admin/category/create',[CategoryController::class,'create'])->name('admin.category.create');
-Route::post('admin/category/store',[CategoryController::class,'store'])->name('admin.category.store');
-Route::post('admin/category/delete',[CategoryController::class,'delete'])->name('admin.categories.delete');
-Route::get('admin/category/edit/{id}',[CategoryController::class,'edit'])->name('admin.categories.edit');
-Route::post('admin/category/update',[CategoryController::class,'update'])->name('admin.categories.update');
 
-Route::get('admin/blog', [\App\Http\Controllers\Admin\BlogController::class, 'index'])->name('admin.blog.index');
-Route::get('admin/blog/create', [\App\Http\Controllers\Admin\BlogController::class, 'create'])->name('admin.blog.create');
-Route::post('admin/blog/store', [\App\Http\Controllers\Admin\BlogController::class, 'store'])->name('admin.blog.store');
-Route::post('admin/blog/delete', [\App\Http\Controllers\Admin\BlogController::class, 'delete'])->name('admin.blog.delete');
-Route::get('admin/blog/edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('admin.blog.edit');
-Route::post('admin/blog/update/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'update'])->name('admin.blog.update');
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    Route::get('/index', [IndexController::class,'index'])->name('index');
+
+    Route::prefix('category')->name('category.')->group(function () {
+        Route::get('/', [CategoryController::class,'index'])->name('index');
+        Route::get('/create', [CategoryController::class,'create'])->name('create');
+        Route::post('/store', [CategoryController::class,'store'])->name('store');
+        Route::post('/delete', [CategoryController::class,'delete'])->name('delete');
+        Route::get('/edit/{id}', [CategoryController::class,'edit'])->name('edit');
+        Route::post('/update/{id}', [CategoryController::class,'update'])->name('update');
+    });
+
+    Route::prefix('blog')->name('blog.')->group(function () {
+        Route::get('/', [BlogController::class, 'index'])->name('index');
+        Route::get('/create', [BlogController::class, 'create'])->name('create');
+        Route::post('/store', [BlogController::class, 'store'])->name('store');
+        Route::post('/delete', [BlogController::class, 'delete'])->name('delete');
+        Route::get('/edit/{id}', [BlogController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [BlogController::class, 'update'])->name('update');
+    });
+
+    Route::prefix('slider')->name('slider.')->group(function () {
+        Route::get('/', [SliderController::class, 'index'])->name('index');
+        Route::get('/create', [SliderController::class, 'create'])->name('create');
+        Route::post('/store', [SliderController::class, 'store'])->name('store');
+        Route::post('/delete', [SliderController::class, 'delete'])->name('delete');
+        Route::get('/edit/{id}', [SliderController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [SliderController::class, 'update'])->name('update');
+    });
+});
+
 
 
 //front

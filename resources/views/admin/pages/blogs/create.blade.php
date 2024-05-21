@@ -216,7 +216,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Blogs Add</h1>
+                <h1 class="h3 mb-2 text-gray-800">Blog Add</h1>
 
                 <a href="{{route('admin.blog.index')}}" style="font-size: 40px">Index Page</a>
 
@@ -235,13 +235,15 @@
                                           placeholder="Enter Content..."></textarea>
                             </div>
                             <div class="form-group">
-                               File:  <input type="file" name="image">
+                               File:  <input type="file" name="image" class="form-control form-control-file">
                             </div>
-                            <select class="form-control"  name="category_id">
-                                @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->title}}</option>
-                                @endforeach
-                            </select><br><br>
+                            <div class="form-group">
+                                <select class="form-control custom-select" name="category_id">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                            <button  class="btn btn-primary btn-user btn-block">Store</button>
                         </form>
 

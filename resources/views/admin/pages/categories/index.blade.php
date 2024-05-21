@@ -240,14 +240,14 @@
                                     <td>{{$category->title}}</td>
                                     <td>{{$category->slug}}</td>
                                     <td>
-                                        <form action="{{route('admin.categories.delete')}}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{$category->id}}">
-                                            <button type="submit">Delete</button>
-                                        </form>
+                                        <a href="{{route('admin.category.edit',$category->id)}}" class="btn btn-outline-success">Edit</a>
                                     </td>
                                     <td>
-                                        <a href="{{route('admin.categories.edit',$category->id)}}">Edit</a>
+                                        <form action="{{route('admin.category.delete')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$category->id}}">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
