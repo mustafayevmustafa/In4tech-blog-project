@@ -35,4 +35,14 @@ Route::get('admin/blog/edit/{id}', [\App\Http\Controllers\Admin\BlogController::
 Route::post('admin/blog/update/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'update'])->name('admin.blog.update');
 
 
+//Front
+Route::get('/', function (){
+    return view('front.home');
+});
+
+Route::get('admin/slider', [\App\Http\Controllers\Admin\SliderController::class,'index'])->name('admin.slider.index');
+Route::get('admin/slider/create', [\App\Http\Controllers\Admin\SliderController::class, 'create'])->name('admin.slider.create');
+Route::post('admin/slider/store', [\App\Http\Controllers\Admin\SliderController::class, 'store'])->name('admin.slider.store');
+
+
 //front
