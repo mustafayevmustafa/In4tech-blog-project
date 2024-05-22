@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\IndexController;
-use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\{BlogController, CategoryController, IndexController, SliderController};
+
+use App\Http\Controllers\Front\{FrontAboutController,
+    FrontContactController,
+    FrontIndexController,
+    FrontSamplepostController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
+//adminpanel
 Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/index', [IndexController::class,'index'])->name('index');
@@ -54,3 +56,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
 //front
+Route::get('/', [FrontIndexController::class,'index'])->name('index');
+Route::get('/about', [FrontAboutController::class,'index'])->name('about.index');
+Route::get('/samplepost', [FrontSamplepostController::class,'index'])->name('samplepost.index');
+Route::get('/contact', [FrontContactController::class,'index'])->name('contact.index');
