@@ -33,6 +33,5 @@ Route::post('admin/blog/store', [\App\Http\Controllers\Admin\BlogController::cla
 Route::post('admin/blog/delete', [\App\Http\Controllers\Admin\BlogController::class, 'delete'])->name('admin.blog.delete');
 Route::get('admin/blog/edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('admin.blog.edit');
 Route::post('admin/blog/update/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'update'])->name('admin.blog.update');
-
-
+Route::get('/',function (){return view('front.home');})->name('home');
 //front
