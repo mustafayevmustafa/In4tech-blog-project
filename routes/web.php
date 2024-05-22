@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\MustafaController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
@@ -34,5 +35,6 @@ Route::post('admin/blog/delete', [\App\Http\Controllers\Admin\BlogController::cl
 Route::get('admin/blog/edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('admin.blog.edit');
 Route::post('admin/blog/update/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'update'])->name('admin.blog.update');
 
+Route::resource('admin/sliders', SliderController::class);
 
 //front
