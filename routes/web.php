@@ -36,3 +36,5 @@ Route::post('admin/blog/update/{id}', [\App\Http\Controllers\Admin\BlogControlle
 
 
 //front
+Route::get('/',[\App\Http\Controllers\Front\IndexController::class,'index'])->name('front.index');
+
