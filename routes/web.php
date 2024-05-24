@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\Admin\{BlogController, CategoryController, IndexController, SliderController};
 
-use App\Http\Controllers\Front\{FrontAboutController,
-    FrontContactController,
+use App\Http\Controllers\Front\{
     FrontIndexController,
+    FrontAboutController,
+    FrontContactController,
     FrontSamplepostController};
 use Illuminate\Support\Facades\Route;
 

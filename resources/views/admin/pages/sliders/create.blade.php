@@ -237,6 +237,13 @@
                             <div class="form-group">
                                File:  <input type="file" name="image" class="form-control form-control-file">
                             </div>
+                            <div class="form-group">
+                                <select class="form-control custom-select" name="category_id">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                            <button  class="btn btn-primary btn-user btn-block">Store</button>
                         </form>
 

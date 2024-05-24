@@ -25,6 +25,7 @@ class SliderUpdateRequest extends FormRequest
             'title'=>'required',
             'content'=>'required',
             'image'=>'nullable',
+            'category_id'=>'nullable',
         ];
     }
 }

@@ -5,7 +5,7 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
+#.env
 .env.backup
 .env.production
 Homestead.json
@@ -16,3 +16,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/resources/views/tmpadmin/
+/resources/views/tmpfront/
+/public/img/

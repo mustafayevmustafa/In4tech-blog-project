@@ -231,6 +231,7 @@
                                     <th>Title</th>
                                     <th>Content</th>
                                     <th>image</th>
+                                    <th>Categorie</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -240,6 +241,11 @@
                                         <td>{{$slider->title}}</td>
                                         <td>{{$slider->content}}</td>
                                         <td><img src="{{asset("img/sliders/$slider->image")}}" alt="Slider image" class="img-thumbnail" style="width: 200px"></td>
+                                        <td>
+                                            <select name="" id="" class="form-control custom-select">
+                                                <option value="">{{$categories->firstWhere('id', $slider->category_id)->title}}</option>
+                                            </select>
+                                        </td>
                                         <td class="d-flex">
                                             <form action="{{route('admin.slider.delete')}}" method="post">
                                                 @csrf

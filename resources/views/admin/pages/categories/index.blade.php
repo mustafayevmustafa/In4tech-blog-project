@@ -228,6 +228,7 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Title</th>
                                     <th>Slug</th>
                                     <th>Delete</th>
@@ -237,6 +238,7 @@
                                 <tbody>
                                 @foreach($categories as $category)
                                 <tr>
+                                    <td>{{$category->id}}</td>
                                     <td>{{$category->title}}</td>
                                     <td>{{$category->slug}}</td>
                                     <td>
