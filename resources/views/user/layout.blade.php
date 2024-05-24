@@ -21,11 +21,8 @@
     <!-- Navigation-->
     @include('user.include.menu')
     <!-- Page Header-->
-    @include('user.include.header')
-    <!-- Main Content-->
-    <div class="container px-4 px-lg-5">
-       @yield('content')
-    </div>
+    @yield('content')
+
     <!-- Footer-->
     @include('user.include.footer')
 
