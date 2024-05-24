@@ -27,6 +27,7 @@ class BlogController extends Controller
 
         $name = 'blog' . time() . '.' . $request->file('image')->extension();
         $request->file('image')->move(public_path() . '/blog/', $name);
+        
         $vali = array_merge($request->validated(), ['image' => $name]);
 
         Blog::create($vali);
