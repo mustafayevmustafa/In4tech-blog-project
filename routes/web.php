@@ -1,6 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\{BlogController, CategoryController, IndexController, SliderController};
+use App\Http\Controllers\Admin\{BlogController,
+    CategoryController,
+    IndexController,
+    MessageController,
+    SliderController};
 
 use App\Http\Controllers\Front\{
     FrontIndexController,
@@ -52,6 +56,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/edit/{id}', [SliderController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [SliderController::class, 'update'])->name('update');
     });
+
+    Route::prefix('message')->name('message.')->group(function () {
+        Route::get('/', [MessageController::class, 'index'])->name('index');
+        Route::post('/delete', [MessageController::class, 'delete'])->name('delete');
+    });
 });
 
 
@@ -61,3 +70,4 @@ Route::get('/', [FrontIndexController::class,'index'])->name('index');
 Route::get('/about', [FrontAboutController::class,'index'])->name('about.index');
 Route::get('/samplepost', [FrontSamplepostController::class,'index'])->name('samplepost.index');
 Route::get('/contact', [FrontContactController::class,'index'])->name('contact.index');
+Route::post('/contact', [FrontContactController::class,'store'])->name('contact.store');
