@@ -14,7 +14,8 @@ class FrontAboutController extends Controller
         $slider = Slider::get();
         if(isset($category) && count($slider) !== 0) {
             $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
-        } else {
+        }
+        if($slider === null || count($slider) === 0){
             $slider = new \stdClass();
             $slider->title = "Başlıq hissəsi";
             $slider->content = "Kontent hissəsi..";
