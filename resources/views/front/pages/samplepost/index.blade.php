@@ -16,7 +16,11 @@
                     <div class="post-heading">
                         <h1>{{$slider->title}}</h1>
                         <h2 class="subheading">{{$slider->content}}</h2>
-                        <span class="meta"> Posted by <a href="#!">Start Bootstrap</a> on {{ $carbon::parse($slider->created_at)->format('F d, Y') }} </span>
+                        <span class="meta"> Posted by <a href="#!">Start Bootstrap</a> on
+                            @if (isset($slider->created_at))
+                                $carbon::parse($slider->created_at)->format('F d, Y')
+                            @endif
+                        </span>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,14 @@ class FrontContactController extends Controller
 {
     public function index(){
         $category = Category::where('title', 'contact')->orderBy('created_at', 'desc')->first();
-        $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
+        if(isset($category)) {
+            $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
+        } else {
+            $slider = new \stdClass();
+            $slider->title = "Başlıq hissəsi";
+            $slider->content = "Kontent hissəsi..";
+            $slider->image = "sekilyeri.png";
+        }
 
         return view('front.pages.contact.index', compact('slider'));
     }

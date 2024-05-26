@@ -13,7 +13,14 @@ class FrontSamplepostController extends Controller
 {
     public function index(){
         $category = Category::where('title', 'samplepost')->orderBy('created_at', 'desc')->first();
-        $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
+        if(isset($category)) {
+            $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
+        } else {
+            $slider = new \stdClass();
+            $slider->title = "Başlıq hissəsi";
+            $slider->content = "Kontent hissəsi..";
+            $slider->image = "sekilyeri.png";
+        }
         $carbon = Carbon::class;
 
         return view('front.pages.samplepost.index', compact('slider', 'carbon'));
