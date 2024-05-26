@@ -24,7 +24,7 @@ class SliderStoreRequest extends FormRequest
         return [
             'title'=>'required',
             'content'=>'required',
-            'image'=>'nullable',
+            'image'=>'required',
             'category_id'=>'required',
         ];
     }

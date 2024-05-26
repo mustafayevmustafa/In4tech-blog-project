@@ -228,11 +228,11 @@
                             @csrf
                             <div class="form-group">
                                 <input type="text" name="title" class="form-control form-control-user"
-                                       placeholder="Enter Title...">
+                                       placeholder="Enter Title..." value="{{ old('title') }}">
                             </div>
                             <div class="form-group">
                                 <textarea type="text" name="content" class="form-control form-control-user"
-                                          placeholder="Enter Content..."></textarea>
+                                          placeholder="Enter Content...">{{ old('content') }}</textarea>
                             </div>
                             <div class="form-group">
                                File:  <input type="file" name="image" class="form-control form-control-file">
