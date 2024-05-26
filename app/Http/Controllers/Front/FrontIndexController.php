@@ -33,9 +33,9 @@ class FrontIndexController extends Controller
         }
 
         if(!$otherCategory) {
-            return view('front.pages.about.index', compact('slider', 'blogDatas', 'carbon'));
+            return view('front.pages.index', compact('slider', 'blogDatas', 'carbon'));
         } else {
-            return view('front.pages.about.index', ['slider' => $otherCategory, 'blogDatas' => $blogDatas, 'carbon' => $carbon]);
+            return view('front.pages.index', ['slider' => $otherCategory, 'blogDatas' => $blogDatas, 'carbon' => $carbon]);
         }
 
     }

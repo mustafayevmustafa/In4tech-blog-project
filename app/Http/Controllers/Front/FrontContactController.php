@@ -31,9 +31,9 @@ class FrontContactController extends Controller
         }
 
         if(!$otherCategory) {
-            return view('front.pages.about.index', compact('slider'));
+            return view('front.pages.contact.index', compact('slider'));
         } else {
-            return view('front.pages.about.index', ['slider' => $otherCategory]);
+            return view('front.pages.contact.index', ['slider' => $otherCategory]);
         }
     }
 

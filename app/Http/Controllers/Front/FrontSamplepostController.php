@@ -32,9 +32,9 @@ class FrontSamplepostController extends Controller
         }
 
         if(!$otherCategory) {
-            return view('front.pages.about.index', compact('slider', 'carbon'));
+            return view('front.pages.samplepost.index', compact('slider', 'carbon'));
         } else {
-            return view('front.pages.about.index', ['slider' => $otherCategory, 'carbon' => $carbon]);
+            return view('front.pages.samplepost.index', ['slider' => $otherCategory, 'carbon' => $carbon]);
         }
     }
 }
