@@ -11,27 +11,28 @@ class FrontAboutController extends Controller
 {
     public function index(){
         $category = Category::where('title', 'about')->orderBy('created_at', 'desc')->first();
-        $slider = Slider::first();
-        $otherCategory = null;
+        $slider = Slider::get();
+        $haveSlider = false;
 
         if (!$category) {
             $slider = new \stdClass();
             $slider->title = "Başlıq hissəsi";
             $slider->content = "Kontent hissəsi..";
             $slider->image = "sekilyeri.png";
-        } elseif (optional($category)->id !== optional($slider)->category_id) {
-            $otherCategory = new \stdClass();
-            $otherCategory->title = "Başlıq hissəsi";
-            $otherCategory->content = "Kontent hissəsi..";
-            $otherCategory->image = "sekilyeri.png";
-        } else {
+        } elseif ($category->id!==null && Slider::where('category_id', $category->id)->exists()) {
             $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
+            $haveSlider = true;
         }
 
-        if(!$otherCategory) {
+        if($haveSlider) {
             return view('front.pages.about.index', compact('slider'));
         } else {
-            return view('front.pages.about.index', ['slider' => $otherCategory]);
+            $defaultSlider = new \stdClass();
+            $defaultSlider->title = "Başlıq hissəsi";
+            $defaultSlider->content = "Kontent hissəsi..";
+            $defaultSlider->image = "sekilyeri.png";
+            return view('front.pages.about.index', ['slider' => $defaultSlider]);
         }
+
     }
 }
