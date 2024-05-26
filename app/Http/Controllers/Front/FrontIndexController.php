@@ -8,15 +8,17 @@ use App\Models\Category;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use stdClass;
 
 class FrontIndexController extends Controller
 {
     public function index(){
         $category = Category::where('title', 'home')->orderBy('created_at', 'desc')->first();
-        if(isset($category)) {
+        $slider = Slider::get();
+        if(isset($category) && count($slider) !== 0) {
             $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
         } else {
-            $slider = new \stdClass();
+            $slider = new stdClass();
             $slider->title = "Başlıq hissəsi";
             $slider->content = "Kontent hissəsi..";
             $slider->image = "sekilyeri.png";

@@ -244,9 +244,8 @@
                                         <td>
                                             <select name="" id="" class="form-control custom-select">
                                                 <option value="">
-                                                    @if(isset($slider->category_id)) {
+                                                    @if(isset($slider->category_id))
                                                         {{$categories->firstWhere('id', $slider->category_id)->title}}
-                                                    }
                                                     @endif
                                                 </option>
                                             </select>

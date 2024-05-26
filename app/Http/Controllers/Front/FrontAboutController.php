@@ -11,7 +11,8 @@ class FrontAboutController extends Controller
 {
     public function index(){
         $category = Category::where('title', 'about')->orderBy('created_at', 'desc')->first();
-        if(isset($category)) {
+        $slider = Slider::get();
+        if(isset($category) && count($slider) !== 0) {
             $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
         } else {
             $slider = new \stdClass();

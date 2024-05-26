@@ -23,7 +23,6 @@ class BlogController extends Controller
     }
 
     public function store(BlogStoreRequest $request){
-
         $name = 'blog' . time() . '.' . $request->file('image')->extension();
         $request->file('image')->move(public_path() . '/img/blog/', $name);
         $vali = array_merge($request->validated(), ['image' => $name]);
