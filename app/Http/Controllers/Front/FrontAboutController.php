@@ -19,7 +19,7 @@ class FrontAboutController extends Controller
             $slider->title = "Başlıq hissəsi";
             $slider->content = "Kontent hissəsi..";
             $slider->image = "sekilyeri.png";
-        } elseif ($category->id !== $slider->category_id) {
+        } elseif (optional($category)->id !== optional($slider)->category_id) {
             $otherCategory = new \stdClass();
             $otherCategory->title = "Başlıq hissəsi";
             $otherCategory->content = "Kontent hissəsi..";
