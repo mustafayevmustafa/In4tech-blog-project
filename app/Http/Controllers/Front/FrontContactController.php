@@ -13,18 +13,28 @@ class FrontContactController extends Controller
 {
     public function index(){
         $category = Category::where('title', 'contact')->orderBy('created_at', 'desc')->first();
-        $slider = Slider::get();
-        if(isset($category) && count($slider) !== 0) {
-            $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
-        }
-        if($slider === null || count($slider) === 0){
+        $slider = Slider::first();
+        $otherCategory = null;
+
+        if (!$category) {
             $slider = new \stdClass();
             $slider->title = "Başlıq hissəsi";
             $slider->content = "Kontent hissəsi..";
             $slider->image = "sekilyeri.png";
+        } elseif ($category->id !== $slider->category_id) {
+            $otherCategory = new \stdClass();
+            $otherCategory->title = "Başlıq hissəsi";
+            $otherCategory->content = "Kontent hissəsi..";
+            $otherCategory->image = "sekilyeri.png";
+        } else {
+            $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
         }
 
-        return view('front.pages.contact.index', compact('slider'));
+        if(!$otherCategory) {
+            return view('front.pages.about.index', compact('slider'));
+        } else {
+            return view('front.pages.about.index', ['slider' => $otherCategory]);
+        }
     }
 
     public function store(ContactStoreRequest $request){

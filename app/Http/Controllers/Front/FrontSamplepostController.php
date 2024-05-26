@@ -13,18 +13,28 @@ class FrontSamplepostController extends Controller
 {
     public function index(){
         $category = Category::where('title', 'samplepost')->orderBy('created_at', 'desc')->first();
-        $slider = Slider::get();
-        if(isset($category) && count($slider) !== 0) {
-            $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
-        }
-        if($slider === null || count($slider) === 0){
+        $slider = Slider::first();
+        $otherCategory = null;
+        $carbon = Carbon::class;
+
+        if (!$category) {
             $slider = new \stdClass();
             $slider->title = "Başlıq hissəsi";
             $slider->content = "Kontent hissəsi..";
             $slider->image = "sekilyeri.png";
+        } elseif ($category->id !== $slider->category_id) {
+            $otherCategory = new \stdClass();
+            $otherCategory->title = "Başlıq hissəsi";
+            $otherCategory->content = "Kontent hissəsi..";
+            $otherCategory->image = "sekilyeri.png";
+        } else {
+            $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
         }
-        $carbon = Carbon::class;
 
-        return view('front.pages.samplepost.index', compact('slider', 'carbon'));
+        if(!$otherCategory) {
+            return view('front.pages.about.index', compact('slider', 'carbon'));
+        } else {
+            return view('front.pages.about.index', ['slider' => $otherCategory, 'carbon' => $carbon]);
+        }
     }
 }
