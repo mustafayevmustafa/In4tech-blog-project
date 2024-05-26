@@ -24,8 +24,8 @@ class BlogStoreRequest extends FormRequest
         return [
             'title'=>'required',
             'content'=>'required',
-            'image'=>'nullable',
-            'category_id'=>'nullable'
+            'image'=>'required',
+            'category_id'=>'required'
         ];
     }
 }

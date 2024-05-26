@@ -238,10 +238,17 @@
                                File:  <input type="file" name="image" class="form-control form-control-file">
                             </div>
                             <div class="form-group">
+                                Choose Category:
                                 <select class="form-control custom-select" name="category_id">
+                                    @if($categories->count() == 0) {
+                                    <option value="">Please create category first!</option>
+                                    }
+                                    @else {
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->title}}</option>
                                     @endforeach
+                                    }
+                                    @endif
                                 </select>
                             </div>
                            <button  class="btn btn-primary btn-user btn-block">Store</button>
