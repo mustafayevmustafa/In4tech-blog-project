@@ -243,7 +243,12 @@
                                         <td><img src="{{asset("img/sliders/$slider->image")}}" alt="Slider image" class="img-thumbnail" style="width: 200px"></td>
                                         <td>
                                             <select name="" id="" class="form-control custom-select">
-                                                <option value="">{{$categories->firstWhere('id', $slider->category_id)->title}}</option>
+                                                <option value="">
+                                                    @if(isset($slider->category_id)) {
+                                                        {{$categories->firstWhere('id', $slider->category_id)->title}}
+                                                    }
+                                                    @endif
+                                                </option>
                                             </select>
                                         </td>
                                         <td class="d-flex">
