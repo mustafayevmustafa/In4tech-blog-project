@@ -14,27 +14,17 @@ class FrontSamplepostController extends Controller
     public function index(){
         $category = Category::where('title', 'samplepost')->orderBy('created_at', 'desc')->first();
         $carbon = Carbon::class;
-        $slider = Slider::get();
-        $haveSlider = false;
+        $slider = $category ? Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first() : null;
 
-        if (!$category) {
-            $slider = new \stdClass();
-            $slider->title = "Başlıq hissəsi";
-            $slider->content = "Kontent hissəsi..";
-            $slider->image = "sekilyeri.png";
-        } elseif ($category->id!==null && Slider::where('category_id', $category->id)->exists()) {
-            $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
-            $haveSlider = true;
+        if (!$slider) {
+            $slider = (object) [
+                'title' => "Başlıq hissəsi",
+                'content' => "Kontent hissəsi..",
+                'image' => "sekilyeri.png"
+            ];
         }
 
-        if($haveSlider) {
-            return view('front.pages.samplepost.index', compact('slider', 'carbon'));
-        } else {
-            $defaultSlider = new \stdClass();
-            $defaultSlider->title = "Başlıq hissəsi";
-            $defaultSlider->content = "Kontent hissəsi..";
-            $defaultSlider->image = "sekilyeri.png";
-            return view('front.pages.samplepost.index', ['slider' => $defaultSlider, 'carbon' => $carbon]);
-        }
+        return view('front.pages.samplepost.index', compact('slider', 'carbon'));
+
     }
 }

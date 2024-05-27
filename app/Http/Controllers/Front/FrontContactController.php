@@ -13,28 +13,17 @@ class FrontContactController extends Controller
 {
     public function index(){
         $category = Category::where('title', 'contact')->orderBy('created_at', 'desc')->first();
-        $slider = Slider::get();
-        $haveSlider = false;
+        $slider = $category ? Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first() : null;
 
-        if (!$category) {
-            $slider = new \stdClass();
-            $slider->title = "Başlıq hissəsi";
-            $slider->content = "Kontent hissəsi..";
-            $slider->image = "sekilyeri.png";
-        } elseif ($category->id!==null && Slider::where('category_id', $category->id)->exists()) {
-            $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
-            $haveSlider = true;
+        if (!$slider) {
+            $slider = (object) [
+                'title' => "Başlıq hissəsi",
+                'content' => "Kontent hissəsi..",
+                'image' => "sekilyeri.png"
+            ];
         }
 
-        if($haveSlider) {
-            return view('front.pages.contact.index', compact('slider'));
-        } else {
-            $defaultSlider = new \stdClass();
-            $defaultSlider->title = "Başlıq hissəsi";
-            $defaultSlider->content = "Kontent hissəsi..";
-            $defaultSlider->image = "sekilyeri.png";
-            return view('front.pages.contact.index', ['slider' => $defaultSlider]);
-        }
+        return view('front.pages.contact.index', compact('slider'));
     }
 
     public function store(ContactStoreRequest $request){

@@ -18,7 +18,7 @@
                         <h2 class="subheading">{{$slider->content}}</h2>
                         <span class="meta">
                             @if (isset($slider->created_at))
-                                Posted by <a href="#!">Start Bootstrap</a> on {{$carbon::parse($slider->created_at)->format('F d, Y')}}
+                                Posted by <a href="#!">Start Bootstrap</a> on {{ $slider->created_at->format('F d, Y') }}
                                 @else
                                 Sample Post Slider yaradilmayib
                             @endif

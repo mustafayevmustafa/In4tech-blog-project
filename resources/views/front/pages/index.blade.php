@@ -37,7 +37,7 @@
                         <p class="post-meta">
                             Posted by
                             <a href="#!">Start Bootstrap</a>
-                            on {{ $carbon::parse($blogData->created_at)->format('F d, Y') }}
+                            on {{ $blogData->created_at->diffForHumans() }}
                         </p>
                     </div>
                     <!-- Divider-->

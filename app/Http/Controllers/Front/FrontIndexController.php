@@ -15,27 +15,17 @@ class FrontIndexController extends Controller
         $category = Category::where('title', 'home')->orderBy('created_at', 'desc')->first();
         $blogDatas = Blog::get();
         $carbon = Carbon::class;
-        $slider = Slider::get();
-        $haveSlider = false;
+        $slider = $category ? Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first() : null;
 
-        if (!$category) {
-            $slider = new \stdClass();
-            $slider->title = "Başlıq hissəsi";
-            $slider->content = "Kontent hissəsi..";
-            $slider->image = "sekilyeri.png";
-        } elseif ($category->id!==null && Slider::where('category_id', $category->id)->exists()) {
-            $slider = Slider::where('category_id', $category->id)->orderBy('created_at', 'desc')->first();
-            $haveSlider = true;
+        if (!$slider) {
+            $slider = (object) [
+                'title' => "Başlıq hissəsi",
+                'content' => "Kontent hissəsi..",
+                'image' => "sekilyeri.png"
+            ];
         }
 
-        if($haveSlider) {
-            return view('front.pages.index', compact('slider', 'blogDatas', 'carbon'));
-        } else {
-            $defaultSlider = new \stdClass();
-            $defaultSlider->title = "Başlıq hissəsi";
-            $defaultSlider->content = "Kontent hissəsi..";
-            $defaultSlider->image = "sekilyeri.png";
-            return view('front.pages.index', ['slider' => $defaultSlider, 'blogDatas' => $blogDatas, 'carbon' => $carbon]);
-        }
+        return view('front.pages.index', compact('slider', 'blogDatas', 'carbon'));
+
     }
 }
