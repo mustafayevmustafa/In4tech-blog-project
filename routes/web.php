@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Admin\{BlogController,
     CategoryController,
     IndexController,
@@ -71,3 +72,8 @@ Route::get('/about', [FrontAboutController::class,'index'])->name('about.index')
 Route::get('/samplepost', [FrontSamplepostController::class,'index'])->name('samplepost.index');
 Route::get('/contact', [FrontContactController::class,'index'])->name('contact.index');
 Route::post('/contact', [FrontContactController::class,'store'])->name('contact.store');
+
+
+
+Route::get('/post', [PostController::class,'index']);
+Route::get('/user', [PostController::class,'user']);
