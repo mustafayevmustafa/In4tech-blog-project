@@ -19,6 +19,7 @@
                 <a href="#!">Start Bootstrap</a>
 {{--                on September 24, 2023--}}
                 {{$blog->created_at}}
+                {{$blog->category->title}}
             </p>
         </div>
             <!-- Divider-->

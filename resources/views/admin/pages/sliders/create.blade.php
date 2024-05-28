@@ -227,7 +227,7 @@
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                       
+
                         <button class="btn btn-primary btn-user btn-block">Store</button>
                     </form>
 
