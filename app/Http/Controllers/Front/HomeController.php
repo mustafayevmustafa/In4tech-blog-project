@@ -15,4 +15,8 @@ class HomeController extends Controller
 //        dd($blogs);
         return view('user.pages.home',compact(['slider','blogs']));
     }
+
+    public function blogDetail(Blog $blog){        
+        return view('user.pages.blogDetail',compact(['blog']));
+    }
 }

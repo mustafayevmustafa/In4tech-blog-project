@@ -30,14 +30,19 @@
 
 
     <li class="nav-item active">
-        <a class="nav-link" href="{{route('admin.category.index')}}">
+        <a class="nav-link" href="/admin/categories">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Category</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="{{route('admin.blog.index')}}">
+        <a class="nav-link" href="/admin/blogs">
             <i class="fas fa-fw fa-blog"></i>
             <span>Blog</span></a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="/api/admin/products">
+            <i class="fas fa-fw fa-blog"></i>
+            <span>Products</span></a>
     </li>
     <li class="nav-item active">
         <a class="nav-link" href="/admin/sliders">

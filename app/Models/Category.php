@@ -24,5 +24,9 @@ class Category extends Model
         static::creating(function ($category) {
             $category->slug = Str::slug($category->title);
         });
+
+        static::updating(function ($category) {
+            $category->slug = Str::slug($category->title);
+        });
     }
 }

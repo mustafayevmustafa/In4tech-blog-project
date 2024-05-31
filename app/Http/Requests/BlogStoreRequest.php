@@ -26,6 +26,7 @@ class BlogStoreRequest extends FormRequest
             'content'=>'required',
             'image'=>'nullable',
             'category_id'=>'nullable',
+            'slider_id'=>'required',
         ];
     }
 }

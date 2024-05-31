@@ -216,25 +216,43 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Categories Edit</h1>
+                <h1 class="h3 mb-2 text-gray-800">Products</h1>
 
-                <a href="/admin/categories" style="font-size: 40px">Index Page</a>
+                <a href="/api/admin/products/create" style="font-size: 40px">Add</a>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
 
                     <div class="card-body">
-                        <form class="user" method="post" action="/admin/categories/{{$category->id}}">
-                            @csrf
-                            @method('PATCH')
-                            <div class="form-group">
-                                <input type="text" name="title" value="{{$category->title}}" class="form-control form-control-user"
-                                       id="exampleInputEmail" aria-describedby="emailHelp"
-                                       placeholder="Enter Title...">
-                            </div>
-                           <button  class="btn btn-primary btn-user btn-block">Update</button>
-                        </form>
-
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Content</th>
+                                    <th>Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($products as $product)
+                                <tr>
+                                    <td>{{$product->title}}</td>
+                                    <td>{{$product->content}}</td>
+                                    <td>{{$product->price}}</td>
+                                    <td class="d-flex">
+                                        <form action="/api/admin/products/{{ $product -> id }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-{{ $product->deleted_at ? 'success':'danger' }}">{{ $product->deleted_at ? 'Cycle':'Delete' }}</button>
+                                        </form>
+                                        <a href="/api/admin/products/{{ $product -> id }}/edit" class="btn btn-success ml-3">Edit</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 

@@ -199,43 +199,29 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Blogs</h1>
+            <h1 class="h3 mb-2 text-gray-800">Product Edit</h1>
 
-            <a href="/admin/blogs/create" style="font-size: 40px">Add</a>
+            <a href="/api/admin/products" style="font-size: 40px">Index Page</a>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Content</th>
-                                    <th>Slug</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($blogs as $blog)
-                                <tr>
-                                    <td>{{$blog->title}}</td>
-                                    <td>{{Str::limit($blog->content, 150,'...')}}</td>
-                                    <td>{{$blog->slug}}</td>
-                                    <td class="d-flex">
-                                        <form action="/admin/blogs/{{ $blog -> id }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                        <a href="/admin/blogs/{{ $blog -> id }}/edit" class="btn btn-success ml-3">Edit</a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    <form class="user" method="post" action="/api/admin/products/{{$product->id}}">
+                        @csrf
+                        @method('PATCH')
+                        <div class="form-group">
+                            <input type="text" name="title" class="form-control form-control-user" placeholder="Enter Title..." value="{{$product->title}}">
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" name="content" class="form-control form-control-user" placeholder="Enter Content...">{{$product->content}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" min="0" name="price" class="form-control form-control-user" value="{{ $product -> price }}" placeholder="Enter Price...">
+                        </div>                      
+                        <button class="btn btn-primary btn-user btn-block">Update</button>
+                    </form>
+
                 </div>
             </div>
 

@@ -22,24 +22,27 @@ class CategoryController extends Controller
     public function store(CategoryStoreRequest $request){
         $data = $request->validated();
         Category::create($data);
-        return redirect()->route('admin.category.index');
+        return redirect('admin/categories');
     }
 
     public function delete(Request $request){
          $id = $request->id;
-//        Category::where('id',$id)->delete();
          Category::find($id)->delete();
-        return redirect()->route('admin.category.index');
-    }
-    public function edit($id){
-        $category = Category::find($id);
+         return redirect('admin/categories');
+        }
+    public function edit(Category $category){
+      
         return view('admin.pages.categories.edit',compact('category'));
     }
-    public function update(CategoryUpdateRequest $request){
+    public function update(CategoryUpdateRequest $request, Category $category){
+        
         $data = $request->validated();
-        $category = new Category();
-        $category->title = $data['title'];
-        $category->save();
-        return redirect()->route('admin.category.index');
+        $category -> update($data);
+        return redirect('/admin/categories');
     }
+
+    public function destroy(Category $category){
+        $category->delete();
+        return redirect('/admin/categories');
+     }
 }

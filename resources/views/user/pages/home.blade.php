@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('user.include.header')
+@include('user.include.header',['slider' => $slider, 'is_header' => true])
     <!-- Main Content-->
 <div class="container px-4 px-lg-5">
 <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -10,16 +10,17 @@
         <!-- Post preview-->
         @foreach($blogs as $blog)
         <div class="post-preview">
-            <a href="post.html">
+            <a href="/blogs/{{ $blog -> id }}">
                 <h2 class="post-title">{{$blog->title}}</h2>
-                <h3 class="post-subtitle">{{$blog->content}}</h3>
+                <h3 class="post-subtitle">{{Str::limit($blog->content, 30,'...')}}</h3>
             </a>
             <p class="post-meta">
                 Posted by
-                <a href="#!">Start Bootstrap</a>
+                <a href="#!">Start Bootstrap</a> on
 {{--                on September 24, 2023--}}
-                {{$blog->created_at}}
-                {{$blog->category->title}}
+                {{date_format($blog->created_at,'M d, Y')}}
+                <br>
+                <span class="text-info">{{$blog->category->title}}</span>
             </p>
         </div>
             <!-- Divider-->

@@ -218,13 +218,13 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Categories Add</h1>
 
-                <a href="{{route('admin.category.index')}}" style="font-size: 40px">Index Page</a>
+                <a href="/admin/categories" style="font-size: 40px">Index Page</a>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
 
                     <div class="card-body">
-                        <form class="user" method="post" action="{{route('admin.category.store')}}">
+                        <form class="user" method="post" action="/admin/categories">
                             @csrf
                             <div class="form-group">
                                 <input type="text" name="title" class="form-control form-control-user"
