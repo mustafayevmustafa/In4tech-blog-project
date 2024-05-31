@@ -9,14 +9,12 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index() {
-        $post = Post::with('user')->get();
-        dd($post);
-        return view('post', compact('post'));
+        $posts = Post::with('user')->get();
+        return view('post', compact('posts'));
     }
 
     public function user() {
-        $user = User::with('posts')->get();
-        dd($user);
-        return view('post', compact('user'));
+        $users = User::with('posts')->get();
+        return view('user', compact('users'));
     }
 }

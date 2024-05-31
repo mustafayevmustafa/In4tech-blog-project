@@ -10,15 +10,19 @@
 <body>
 <table border="1">
     <tr>
-        <th>Title</th>
-        <th>Content</th>
-        <th>User</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Posts</th>
     </tr>
-    @foreach($posts as $post)
+    @foreach($users as $user)
         <tr>
-            <td>{{$post->title}}</td>
-            <td>{{$post->content}}</td>
-            <td>{{$post->user->name}}</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->email}}</td>
+            <td>
+                @foreach($user->posts as $istifadeci)
+                    {{$istifadeci->title}}<br>
+                @endforeach
+            </td>
         </tr>
     @endforeach
 </table>
