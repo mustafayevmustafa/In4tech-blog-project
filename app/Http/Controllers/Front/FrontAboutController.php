@@ -22,7 +22,7 @@ class FrontAboutController extends Controller
             ];
         }
 
-        return view('front.pages.about.index', compact('slider'));
+        return view('Front.pages.about.index', compact('slider'));
 
 
     }

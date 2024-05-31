@@ -23,13 +23,13 @@ class FrontContactController extends Controller
             ];
         }
 
-        return view('front.pages.contact.index', compact('slider'));
+        return view('Front.pages.contact.index', compact('slider'));
     }
 
     public function store(ContactStoreRequest $request){
         $data = $request->validated();
         Message::create($data);
 
-        return redirect()->route('contact.store');
+        return redirect()->route('contact.index');
     }
 }

@@ -25,7 +25,7 @@ class FrontIndexController extends Controller
             ];
         }
 
-        return view('front.pages.index', compact('slider', 'blogDatas', 'carbon'));
+        return view('Front.pages.index', compact('slider', 'blogDatas', 'carbon'));
 
     }
 }

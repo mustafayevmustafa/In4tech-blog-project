@@ -14,12 +14,12 @@ class BlogController extends Controller
 {
     public function index(){
         $blogs = Blog::get();
-        return view('admin.pages.blogs.index', compact('blogs'));
+        return view('Admin.pages.blogs.index', compact('blogs'));
     }
 
     public function create(){
         $categories = Category::get();
-        return view('admin.pages.blogs.create', compact('categories'));
+        return view('Admin.pages.blogs.create', compact('categories'));
     }
 
     public function store(BlogStoreRequest $request){
@@ -28,25 +28,25 @@ class BlogController extends Controller
         $vali = array_merge($request->validated(), ['image' => $name]);
 
         Blog::create($vali);
-        return redirect()->route('admin.blog.index');
+        return redirect()->route('Admin.blog.index');
     }
 
     public function delete(Request $request){
         $id = $request->id;
         //Category::where('id',$id)->delete();
         Blog::find($id)->delete();
-        return redirect()->route('admin.blog.index');
+        return redirect()->route('Admin.blog.index');
     }
 
     public function edit($id){
         $blog = Blog::find($id);
-        return view('admin.pages.blogs.edit', compact('blog', 'id'));
+        return view('Admin.pages.blogs.edit', compact('blog', 'id'));
     }
 
     public function update(BlogUpdateRequest $request, $id)
     {
         $data = $request->validated();
         Blog::where('id', $id)->update($data);
-        return redirect()->route('admin.blog.index');
+        return redirect()->route('Admin.blog.index');
     }
 }

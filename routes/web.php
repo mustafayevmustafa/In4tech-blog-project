@@ -26,9 +26,9 @@ use Illuminate\Support\Facades\Route;
 
 
 //adminpanel
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('Admin.')->group(function () {
 
-    Route::get('/index', [IndexController::class,'index'])->name('index');
+    Route::get('/index', [IndexController::class,'dashboard'])->name('dashboard');
 
     Route::prefix('category')->name('category.')->group(function () {
         Route::get('/', [CategoryController::class,'index'])->name('index');
@@ -60,14 +60,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::prefix('message')->name('message.')->group(function () {
         Route::get('/', [MessageController::class, 'index'])->name('index');
         Route::post('/delete', [MessageController::class, 'delete'])->name('delete');
+        Route::get('/removed', [MessageController::class, 'removedMessages'])->name('removedMessages');
+        Route::get('/removed/{id}', [MessageController::class, 'permanentlyDelete'])->name('permanentlyDelete');
     });
 });
 
 
 
-//front
+//Front
 Route::get('/', [FrontIndexController::class,'index'])->name('index');
 Route::get('/about', [FrontAboutController::class,'index'])->name('about.index');
 Route::get('/samplepost', [FrontSamplepostController::class,'index'])->name('samplepost.index');
+Route::post('/blog/{id}', [FrontSamplepostController::class,'blog'])->name('blog.index');
 Route::get('/contact', [FrontContactController::class,'index'])->name('contact.index');
 Route::post('/contact', [FrontContactController::class,'store'])->name('contact.store');

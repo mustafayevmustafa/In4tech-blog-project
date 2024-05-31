@@ -24,7 +24,12 @@ class FrontSamplepostController extends Controller
             ];
         }
 
-        return view('front.pages.samplepost.index', compact('slider', 'carbon'));
+        return view('Front.pages.samplepost.index', compact('slider', 'carbon'));
 
+    }
+
+    public function blog(Request $request){
+        $blogData = json_decode($request->all()['data']);
+        return view('Front.pages.samplepost.blog', compact('blogData'));
     }
 }

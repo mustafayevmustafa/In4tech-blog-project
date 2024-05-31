@@ -15,12 +15,12 @@ class SliderController extends Controller
     public function index(){
         $sliders = Slider::get();
         $categories = Category::all();
-        return view('admin.pages.sliders.index', compact('sliders', 'categories'));
+        return view('Admin.pages.sliders.index', compact('sliders', 'categories'));
     }
 
     public function create(){
         $categories = Category::get();
-        return view('admin.pages.sliders.create', compact('categories'));
+        return view('Admin.pages.sliders.create', compact('categories'));
     }
 
     public function store(SliderStoreRequest $request){
@@ -29,7 +29,7 @@ class SliderController extends Controller
         $data = array_merge($request->validated(), ['image' => $name]);
 
         Slider::create($data);
-        return redirect()->route('admin.slider.index');
+        return redirect()->route('Admin.slider.index');
     }
 
     public function delete(Request $request){
@@ -42,12 +42,12 @@ class SliderController extends Controller
         }
 
         Slider::find($id)->delete();
-        return redirect()->route('admin.slider.index');
+        return redirect()->route('Admin.slider.index');
     }
 
     public function edit($id){
         $slider = Slider::find($id);
-        return view('admin.pages.sliders.edit', compact('slider', 'id'));
+        return view('Admin.pages.sliders.edit', compact('slider', 'id'));
     }
 
     public function update(SliderUpdateRequest $request, $id)
@@ -60,6 +60,6 @@ class SliderController extends Controller
         $data = array_merge($request->validated(), ['image' => $name]);
         Slider::where('id', $id)->update($data);
 
-        return redirect()->route('admin.slider.index');
+        return redirect()->route('Admin.slider.index');
     }
 }
