@@ -40,7 +40,10 @@ class BlogController extends Controller
 
     public function destroy(Blog $blog)
     {
-        $blog->delete();
+        if ($blog->deleted_at) $blog->deleted_at = null;
+        else $blog->deleted_at = now();
+
+        $blog -> update();
         return redirect('/admin/blogs');
     }
 

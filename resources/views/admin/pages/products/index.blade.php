@@ -246,7 +246,7 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-{{ $product->deleted_at ? 'success':'danger' }}">{{ $product->deleted_at ? 'Cycle':'Delete' }}</button>
                                         </form>
-                                        <a href="/api/admin/products/{{ $product -> id }}/edit" class="btn btn-success ml-3">Edit</a>
+                                        <a href="/api/admin/products/{{ $product -> id }}/edit" class="btn btn-warning ml-3">Edit</a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -227,9 +227,9 @@
                                         <form action="/admin/blogs/{{ $blog -> id }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-{{ $blog->deleted_at ? 'success':'danger' }}">{{ $blog->deleted_at ? 'Cycle':'Delete' }}</button>
                                         </form>
-                                        <a href="/admin/blogs/{{ $blog -> id }}/edit" class="btn btn-success ml-3">Edit</a>
+                                        <a href="/admin/blogs/{{ $blog -> id }}/edit" class="btn btn-warning ml-3">Edit</a>
                                     </td>
                                 </tr>
                                 @endforeach
