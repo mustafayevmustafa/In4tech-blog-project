@@ -41,34 +41,21 @@
     </li>
     <li class="nav-item active">
         <a class="nav-link" href="/api/admin/products">
-            <i class="fas fa-fw fa-blog"></i>
+            <i class="fas fa-fw fa-barcode"></i>
             <span>Products</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="/admin/sliders">
-            <i class="fas fa-fw fa-blog"></i>
-            <span>Sliders</span></a>
+        <a class="nav-link" href="/admin/contacts">
+            <i class="fas fa-fw fa-envelope"></i>
+            <span>Contacts</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="{{route('admin.settings.index')}}">
-            <i class="fas fa-fw fa-blog"></i>
-            <span>Settings</span></a>
+        <a class="nav-link" href="/admin/sliders">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Sliders</span></a>
     </li>
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-           aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
-    </li>
+  
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

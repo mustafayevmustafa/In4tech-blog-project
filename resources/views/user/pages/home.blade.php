@@ -1,5 +1,6 @@
 @extends('user.layout')
 
+@if($slider)
 @section('content')
 
 @include('user.include.header',['slider' => $slider, 'is_header' => true])
@@ -35,3 +36,6 @@
 
     </div>
 @endsection
+@else
+<h1 class="text-center">There is no info at Server</h1>
+@endif

@@ -1,5 +1,6 @@
 @extends('user.layout')
 
+@if($blog)
 @section('content')
 
 @include('user.include.header', ['slider' => $blog->slider, 'is_header' => false])
@@ -19,3 +20,6 @@
 
     </div>
 @endsection
+@else
+<h1 class="text-center">There is no info at Server</h1>
+@endif
