@@ -11,6 +11,7 @@ use App\Http\Controllers\Front\{
     FrontAboutController,
     FrontContactController,
     FrontSamplepostController};
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,10 +25,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
 
 //adminpanel
-Route::prefix('admin')->name('Admin.')->group(function () {
-
+Route::prefix('admin')->name('Admin.')->middleware('auth.admin')->group(function () {
     Route::get('/index', [IndexController::class,'dashboard'])->name('dashboard');
 
     Route::prefix('category')->name('category.')->group(function () {
@@ -74,3 +75,7 @@ Route::get('/samplepost', [FrontSamplepostController::class,'index'])->name('sam
 Route::post('/blog/{id}', [FrontSamplepostController::class,'blog'])->name('blog.index');
 Route::get('/contact', [FrontContactController::class,'index'])->name('contact.index');
 Route::post('/contact', [FrontContactController::class,'store'])->name('contact.store');
+
+
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
