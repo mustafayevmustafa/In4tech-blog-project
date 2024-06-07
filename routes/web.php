@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\{BlogController,
     CategoryController,
     IndexController,
     MessageController,
+    NewsController,
     SliderController};
 
 use App\Http\Controllers\Front\{
@@ -29,8 +30,8 @@ use Illuminate\Support\Facades\Route;
 
 //adminpanel
 Route::middleware('auth')->group(function () {
-
     Route::prefix('admin')->name('admin.')->group(function () {
+
         Route::get('/index', [IndexController::class,'index'])->name('index');
 
         Route::prefix('category')->name('category.')->group(function () {
@@ -58,6 +59,12 @@ Route::middleware('auth')->group(function () {
             Route::post('/delete', [SliderController::class, 'delete'])->name('delete');
             Route::get('/edit/{id}', [SliderController::class, 'edit'])->name('edit');
             Route::post('/update/{id}', [SliderController::class, 'update'])->name('update');
+        });
+
+        Route::prefix('news')->name('news.')->group(function () {
+            Route::get('/', [NewsController::class, 'index'])->name('index');
+            Route::get('/create', [NewsController::class, 'create'])->name('create');
+            Route::post('/store', [NewsController::class, 'store'])->name('store');
         });
 
         Route::prefix('message')->name('message.')->group(function () {

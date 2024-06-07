@@ -45,6 +45,11 @@
             <span>Slider</span></a>
     </li>
     <li class="nav-item active">
+        <a class="nav-link" href="{{route('admin.news.index')}}">
+            <i class="fas fa-fw fa-newspaper"></i>
+            <span>News</span></a>
+    </li>
+    <li class="nav-item active">
         <a class="nav-link" href="{{route('admin.message.index')}}">
             <i class="fas fa-fw fa-envelope-open-text"></i>
             <span>Message</span></a>
