@@ -30,6 +30,16 @@
                     </div>
                 </form>
 
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{\Illuminate\Support\Facades\App::getLocale()}}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url('lang/en') }}">En</a></li>
+                        <li><a class="dropdown-item" href="{{ url('lang/az') }}">Az</a></li>
+                    </ul>
+                </div>
+
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 

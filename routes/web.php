@@ -75,6 +75,14 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::get('lang/{locale}', function ($locale) {
+    if(in_array($locale, ['en', 'az'])) {
+        Session::put('locale', $locale);
+    }
+
+    return redirect()->back();
+});
+
 
 
 //front

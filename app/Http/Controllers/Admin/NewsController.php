@@ -7,6 +7,7 @@ use App\Models\Languages;
 use App\Models\News;
 use App\Models\NewsTranslation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class NewsController extends Controller
 {
@@ -26,6 +27,10 @@ class NewsController extends Controller
         $news = News::create();
         $newsTranslations = [];
 
+        $currentLocale = App::getLocale();
+        $language = Languages::where('country', $currentLocale)->first();
+        $languageId = $language->id;
+
         foreach (Languages::all() as $language) {
             $newsTranslations[] = [
                 'news_id' => $news->id,
@@ -38,7 +43,11 @@ class NewsController extends Controller
             NewsTranslation::Insert($newsTranslations);
         }
 
+        $news = News::with(['translations' => function($query) use($languageId) {
+            $query->where('language_id', $languageId);
+        }])->get();
 
-        return view('admin.index');
+
+        return view('admin.pages.news.index', compact('news'));
     }
 }
