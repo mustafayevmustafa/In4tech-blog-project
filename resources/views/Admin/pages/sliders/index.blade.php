@@ -224,12 +224,81 @@
 
                 <div style="display: flex; justify-content: space-between;">
                     <a href="{{route('Admin.slider.create')}}" style="font-size: 40px">Add</a>
-                    @if(!$sliders->isEmpty())
-                        <div style="display: flex;">
+                    <div style="display: flex;">
+                        @if(!$sliders->isEmpty())
                             <a href="{{ route('Admin.slider.export') }}" style="font-size: 40px; margin-right: 30px">Export</a>
-                            <a href="{{ route('Admin.slider.import') }}" style="font-size: 40px">Import</a>
+                        @endif
+                        <a href="#" id="importBtn" style="font-size: 40px">Import</a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div id="importModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Excel Dosyasını Buraya Sürükleyin veya Seçin</h2>
+                            <form id="importForm" action="{{ route('Admin.slider.import') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div id="dropZone" class="drop-zone">
+                                    Dosyayı sürükleyip bırakın veya buraya tıklayarak dosya seçin.
+                                    <input type="file" name="file" id="fileInput" accept=".xlsx" style="display: none;">
+                                </div>
+                                <button type="submit" id="submitBtn" style="display: none;">Gönder</button>
+                            </form>
                         </div>
-                    @endif
+                    </div>
+
+                    <!-- JavaScript -->
+                    <script>
+                        var importModal = document.getElementById('importModal');
+                        var importBtn = document.getElementById("importBtn");
+                        var closeBtn = document.getElementsByClassName("close")[0];
+                        var dropZone = document.getElementById('dropZone');
+                        var fileInput = document.getElementById('fileInput');
+                        var submitBtn = document.getElementById('submitBtn');
+
+                        importBtn.onclick = function() {
+                            importModal.style.display = "block";
+                        }
+
+                        closeBtn.onclick = function() {
+                            importModal.style.display = "none";
+                        }
+
+                        window.onclick = function(event) {
+                            if (event.target == importModal) {
+                                importModal.style.display = "none";
+                            }
+                        }
+
+                        dropZone.addEventListener('dragover', function(e) {
+                            e.preventDefault();
+                            dropZone.classList.add('dragover');
+                        });
+
+                        dropZone.addEventListener('dragleave', function(e) {
+                            e.preventDefault();
+                            dropZone.classList.remove('dragover');
+                        });
+
+                        dropZone.addEventListener('drop', function(e) {
+                            e.preventDefault();
+                            dropZone.classList.remove('dragover');
+                            var file = e.dataTransfer.files[0];
+                            fileInput.files = e.dataTransfer.files;
+
+                            // Dosyayı yükleyelim
+                            submitBtn.click();
+                        });
+
+                        dropZone.addEventListener('click', function() {
+                            fileInput.click();
+                        });
+
+                        fileInput.addEventListener('change', function() {
+                            // Dosyayı yükleyelim
+                            submitBtn.click();
+                        });
+                    </script>
                 </div>
 
                 <!-- DataTales Example -->
