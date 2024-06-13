@@ -56,6 +56,8 @@ Route::prefix('admin')->name('Admin.')->middleware('auth.admin')->group(function
         Route::post('/delete', [SliderController::class, 'delete'])->name('delete');
         Route::get('/edit/{id}', [SliderController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [SliderController::class, 'update'])->name('update');
+        Route::get('/export', [SliderController::class, 'export'])->name('export');
+        Route::post('/import', [SliderController::class, 'import'])->name('import');
     });
 
     Route::prefix('message')->name('message.')->group(function () {

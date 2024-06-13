@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\Excel\SlidersExport;
+use App\Imports\Excel\SlidersImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SliderStoreRequest;
 use App\Http\Requests\Admin\SliderUpdateRequest;
@@ -61,5 +64,17 @@ class SliderController extends Controller
         Slider::where('id', $id)->update($data);
 
         return redirect()->route('Admin.slider.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new SlidersExport, 'sliders.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new SlidersImport, $file);
+        return redirect()->back()->with('success', 'Sliders imported successfully');
     }
 }

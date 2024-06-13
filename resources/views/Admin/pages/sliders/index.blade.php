@@ -222,7 +222,15 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Sliders</h1>
 
-                <a href="{{route('Admin.slider.create')}}" style="font-size: 40px">Add</a>
+                <div style="display: flex; justify-content: space-between;">
+                    <a href="{{route('Admin.slider.create')}}" style="font-size: 40px">Add</a>
+                    @if(!$sliders->isEmpty())
+                        <div style="display: flex;">
+                            <a href="{{ route('Admin.slider.export') }}" style="font-size: 40px; margin-right: 30px">Export</a>
+                            <a href="{{ route('Admin.slider.import') }}" style="font-size: 40px">Import</a>
+                        </div>
+                    @endif
+                </div>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
