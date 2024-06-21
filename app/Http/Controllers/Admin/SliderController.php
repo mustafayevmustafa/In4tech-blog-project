@@ -9,12 +9,15 @@ use App\Models\Category;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class SliderController extends Controller
 {
     public function index(){
+        birincisisalam();
         $sliders = Slider::get();
         $categories = Category::all();
+        Log::channel('yenilog')->debug('nese error cixdi');
         return view('admin.pages.sliders.index', compact('sliders', 'categories'));
     }
 
@@ -59,6 +62,7 @@ class SliderController extends Controller
         $request->file('image')->move(public_path() . '/img/sliders/', $name);
         $data = array_merge($request->validated(), ['image' => $name]);
         Slider::where('id', $id)->update($data);
+
 
         return redirect()->route('admin.slider.index');
     }

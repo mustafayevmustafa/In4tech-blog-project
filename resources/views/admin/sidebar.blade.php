@@ -54,6 +54,16 @@
             <i class="fas fa-fw fa-envelope-open-text"></i>
             <span>Message</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('permissions.index')}}">
+            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <span>Permission</span></a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('roles.index')}}">
+            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <span>Role</span></a>
+    </li>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
