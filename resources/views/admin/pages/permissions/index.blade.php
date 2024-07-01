@@ -244,6 +244,8 @@
 {{--                                            <input type="hidden" name="id" value="{{$permission->id}}" >--}}
 {{--                                            <button type="submit" class="btn btn-danger">Delete</button>--}}
 {{--                                        </form>--}}
+{{--                                        <!-- Yuxaridaki formu resource rut ucun asagidaki kimi deyisdik -->--}}
+
                                         <form action="{{route('permissions.destroy', $permission->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')

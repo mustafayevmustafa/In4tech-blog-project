@@ -38,25 +38,29 @@ class PermissionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Permission $permission)
     {
-        //
+        return view('admin.pages.permissions.show', compact('permission'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Permission $permission)
     {
-        //
+        return view('admin.pages.permissions.edit', compact('permission'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Permission $permission)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:permissions,name,' . $permission->id
+        ]);
+        $permission->update($request->all());
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -65,8 +69,6 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         $permission->delete();
-
         return redirect()->route('permissions.index');
-
     }
 }
