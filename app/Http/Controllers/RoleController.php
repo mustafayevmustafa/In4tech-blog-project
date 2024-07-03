@@ -55,8 +55,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        $permission = Permission::all();
-        return view('admin.pages.roles.edit', compact('permission'));
+        $permissions = Permission::all();
+        return view('admin.pages.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -64,9 +64,8 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        $request->validate([
-            'name' => 'required|unique:roles,name,' . $role->id
-        ]);
+        $request->validate(['name' => 'required|unique:roles,name,' . $role->id]);
+
         $role->update([
             'name' => $request->input('name'),
         ]);

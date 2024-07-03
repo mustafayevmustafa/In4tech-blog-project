@@ -29,7 +29,7 @@ class NewsController extends Controller
         $news = News::create();
         $newsTranslations = [];
 
-        $currentLocale = \::getLocale();
+        $currentLocale = News::getLocale();
         $language = Languages::where('country', $currentLocale)->first();
         $languageId = $language->id;
 

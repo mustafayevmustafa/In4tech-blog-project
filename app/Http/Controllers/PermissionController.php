@@ -30,8 +30,12 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['name' => 'required|unique:permissions,name']);
+        $request->validate([
+            'name' => 'required|unique:permissions,name'
+        ]);
+
         Permission::create($request->all());
+
         return redirect()->route('permissions.index');
     }
 
