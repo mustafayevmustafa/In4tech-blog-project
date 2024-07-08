@@ -4,11 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
-class LanguageSwitcher
+class AuthCheckMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,8 +15,10 @@ class LanguageSwitcher
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Session::has('locale')) {
-            App::setLocale(Session::get('locale'));
+//        dd(session()->all());
+        if ($request->is('admin/*') && !auth()->check()) {
+            // Kullanıcı giriş yapmamışsa, isteği reddet veya başka bir işlem yapabilirsiniz.
+            return redirect()->route('login'); // Örnek olarak login sayfasına yönlendiriyoruz.
         }
 
         return $next($request);
