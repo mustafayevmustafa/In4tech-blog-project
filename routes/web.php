@@ -4,6 +4,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Middleware\AuthCheckMiddleware;
+use App\Jobs\TestJob;
 use App\Http\Controllers\Admin\{BlogController,
     CategoryController,
     IndexController,
@@ -125,3 +126,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('roles', RoleController::class);
 Route::resource('permissions', PermissionController::class);
 //Route::resource('user', PermissionController::class);
+
+
+
+//job
+Route::get('test', function() {
+    $data = 'test';
+    TestJob::dispatch($data);
+});

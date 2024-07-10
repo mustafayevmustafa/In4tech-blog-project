@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Blog;
+use App\Models\Role;
+use App\Observers\BlogObserver;
+use App\Observers\RoleObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,8 +21,8 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        Role::observe(RoleObserver::class);
     }
 }

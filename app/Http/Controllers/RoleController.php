@@ -31,6 +31,9 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        // Policy kullanarak yetkilendirme kontrolü
+        $this->authorize('create', Role::class);
+
         $request->validate(['name' => 'required|unique:roles,name']);
 
         $role = Role::create([
@@ -84,4 +87,5 @@ class RoleController extends Controller
         $role->delete();
         return redirect()->route('roles.index');
     }
+
 }
